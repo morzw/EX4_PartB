@@ -31,7 +31,7 @@ public abstract class UserInterface implements UserInterfaceMethods {
 
     @Override
     public boolean charge(double amount, CreditCard creditCard){
-        guardian.account.totalPrice -= amount;
+        guardian.account.setTotalPrice(guardian.account.getTotalPrice() - amount);
         return true;
     }
 }
