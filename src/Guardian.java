@@ -5,14 +5,14 @@ import java.util.List;
 public class Guardian {
 
     private String ID;
-    private HashMap<Integer,Child> children;
+    private HashMap<String,Child> children;
     private UserInterface system;
     private CreditCard creditCard;
     Account account;
 
     public Guardian(String ID) {
         this.ID = ID;
-        this.children = new HashMap<Integer,Child>();
+        this.children = new HashMap<String, Child>();
     }
 
     public String getID() {
@@ -23,7 +23,7 @@ public class Guardian {
         this.ID = ID;
     }
 
-    public HashMap<Integer, Child> getChildren() {
+    public HashMap<String, Child> getChildren() {
         return children;
     }
 
