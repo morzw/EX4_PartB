@@ -1,11 +1,57 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class eTicket {
 
-//    private int age;
+    private int age;
     private double timeLimit;
     private List<Device> devices;
-//    private ElectronicBracelet electronicBracelet;
+    private eBracelet eBracelet;
 
+    public eTicket(String childName, int age, double timeLimit) {
+        this.age = age;
+        this.timeLimit = timeLimit;
+        this.devices = new ArrayList<>();
+        this.eBracelet = new eBracelet(childName);
+    }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getTimeLimit() {
+        return timeLimit;
+    }
+
+    public void setTimeLimit(double timeLimit) {
+        this.timeLimit = timeLimit;
+    }
+
+    public List<Device> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(List<Device> devices) {
+        this.devices = devices;
+    }
+
+    public eBracelet geteBracelet() {
+        return eBracelet;
+    }
+
+    public void seteBracelet(eBracelet eBracelet) {
+        this.eBracelet = eBracelet;
+    }
+
+    public void setHeightInBracelet(double height){
+        this.eBracelet.setHeight(height);
+    }
+
+    public void setWeightInBracelet(double weight){
+        eBracelet.setWeight(weight);
+    }
 }

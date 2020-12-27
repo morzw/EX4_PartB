@@ -77,4 +77,28 @@ public class Device {
     public boolean isExtreme() {
         return false;
     }
+
+    public boolean checkChild(Child child){
+        if(!isOpen){
+            System.out.println("The device isn't open.");
+            return false;
+        }
+        if(!isProper){
+            System.out.println("The device isn't proper.");
+            return false;
+        }
+        if(child.geteTicket().getAge() < ageLimit){
+            System.out.println(child.getID() + " doesn't exceed the age limit.");
+            return false;
+        }
+        if(child.geteTicket().geteBracelet().getHeight() < heightLimit){
+            System.out.println(child.getID() + " doesn't exceed the height limit.");
+            return false;
+        }
+        if(child.geteTicket().geteBracelet().getWeight() < weightLimit){
+            System.out.println(child.getID() + " doesn't exceed the weight limit.");
+            return false;
+        }
+        return true;
+    }
 }

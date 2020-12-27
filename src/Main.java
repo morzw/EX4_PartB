@@ -8,8 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        // initial the park
-//        E_Park e_park = new E_Park();
+        // initial the park
+        ePark ePark = new ePark();
 
         // initial 3 devices
         Device mambaRide = new ExtremeDevice("Mamba Ride", 20, 12, 1.4, 0);
@@ -20,10 +20,13 @@ public class Main {
         systemObjects.add(mambaRide);
         systemObjects.add(giantWheel);
         systemObjects.add(carrousel);
-//        e_park.addDevice(device.getID(),device);
-//        e_park.addDevice(device1.getID(),device1);
-//        e_park.addDevice(device2.getID(),device2);
-//        allObjects.add(e_park);
+
+        // initial 3 devices to the park
+        ePark.addDevice(mambaRide.getID(), mambaRide);
+        ePark.addDevice(giantWheel.getID(), giantWheel);
+        ePark.addDevice(carrousel.getID(), carrousel);
+
+        systemObjects.add(ePark);
 
         // Main Menu
         System.out.println("Welcome to ePark Main Menu!\nPlease select one of the following options:");
