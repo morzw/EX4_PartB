@@ -65,6 +65,7 @@ public class Guardian {
     }
 
     public Child exitPark(String childName){
+        if (!children.containsKey(childName)){return null;}
         Child child =children.get(childName);
         children.remove(childName);
         system.exitChildFromPark(child);

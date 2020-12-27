@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public static List<Object> systemObjects; //holds all objects in the system
+    public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -51,8 +52,8 @@ public class Main {
             System.out.println("For Manage ticket enter manageTicket <child_name>,  e.g., manageTicket Mor");
             System.out.println("For Exit park enter exitPark");
             System.out.println("For Exit enter exit");
-            Scanner in = new Scanner(System.in);
-            action = in.nextLine();
+
+            action = scanner.next();
             String originAction = action;
             action = action.toLowerCase();
             String childName = "";
@@ -65,29 +66,29 @@ public class Main {
                     String input = "y";
                     while (input.equals("y")) {
                         System.out.println("enter child name:");
-                        String name = in.next();
+                        String name = scanner.next();
                         System.out.println("enter child weight:");
-                        double weight = in.nextDouble();
+                        double weight = scanner.nextDouble();
                         System.out.println("enter child height:");
-                        double height = in.nextDouble();
+                        double height = scanner.nextDouble();
                         System.out.println("enter child age:");
-                        int age = in.nextInt();
+                        int age = scanner.nextInt();
                         Child child = new Child(name, "1234", age, 5, height, weight);
                         guardian.addChildren(child);
                         systemObjects.add(child);
                         systemObjects.add(child.geteTicket());
                         systemObjects.add(child.geteTicket().geteBracelet());
                         System.out.println("to register another child press y");
-                        input = in.next();
+                        input = scanner.next();
                     }
                     System.out.println("enter credit card number:");
-                    int creditCardNumber = in.nextInt();
+                    int creditCardNumber = scanner.nextInt();
                     System.out.println("enter credit card password(int):");
-                    int creditCardPassword = in.nextInt();
+                    int creditCardPassword = scanner.nextInt();
                     CreditCard creditCard = new CreditCard(creditCardNumber, creditCardPassword);
                     systemObjects.add(creditCard);
                     System.out.println("enter account limit:");
-                    double limit = in.nextDouble();
+                    double limit = scanner.nextDouble();
                     guardian.setAccount(new Account(limit, 0));
                     systemObjects.add(guardian.getAccount());
                     break;
@@ -96,8 +97,12 @@ public class Main {
                     break;
                 case "exitpark":
                     System.out.println("enter child name to remove");
-                    String name = in.next();
+                    String name = scanner.next();
                     Child child = guardian.exitPark(name);
+                    if (child == null){
+                        System.out.println("child not found");
+                        break;
+                    }
                     systemObjects.remove(child);
                     systemObjects.remove(child.geteTicket().geteBracelet());
                     systemObjects.remove(child.geteTicket());
@@ -124,8 +129,8 @@ public class Main {
             System.out.println("For adding a ride enter Add");
             System.out.println("For removing a ride enter Remove");
             System.out.println("For resuming enter exitMenu");
-            Scanner in = new Scanner(System.in);
-            manageTicketAction = in.nextLine();
+//            Scanner in = new Scanner(System.in);
+            manageTicketAction = scanner.nextLine();
 //            String originManageTicketAction = manageTicketAction;
             manageTicketAction = manageTicketAction.toLowerCase();
 //            if (manageTicketAction.contains("add")) {
