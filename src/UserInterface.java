@@ -13,7 +13,7 @@ public abstract class UserInterface implements UserInterfaceMethods {
     }
 
     public HashMap<String, Device> getDevicesForChild(Child child) {
-        HashMap<String, Device> devicesForChild = new HashMap<String, Device>();
+        HashMap<String, Device> devicesForChild = new HashMap<>();
         for (String deviceID: ePark.getDevices().keySet()){
             if (ePark.getDevices().get(deviceID).isValidForChild(child)){
                 devicesForChild.put(deviceID, ePark.getDevices().get(deviceID)) ;
