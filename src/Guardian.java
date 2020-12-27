@@ -1,17 +1,18 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Guardian {
 
     private String ID;
-    private List<Child> children;
+    private HashMap<Integer,Child> children;
     private UserInterface system;
     private CreditCard creditCard;
     Account account;
 
     public Guardian(String ID) {
-        this.ID = ID; //??????????
-        this.children = new ArrayList<>();
+        this.ID = ID;
+        this.children = new HashMap<Integer,Child>();
     }
 
     public String getID() {
@@ -22,12 +23,12 @@ public class Guardian {
         this.ID = ID;
     }
 
-    public List<Child> getChildren() {
+    public HashMap<Integer, Child> getChildren() {
         return children;
     }
 
     public void addChildren(Child child) {
-        this.children.add(child);
+        this.children.put(child.getId(),child);
     }
 
     public CreditCard getCreditCard() {
@@ -52,5 +53,10 @@ public class Guardian {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public void exitPark(int childId){
+        Child child =children.get(childId);
+//        TODO: check where the price from
     }
 }
