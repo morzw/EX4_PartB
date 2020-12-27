@@ -13,11 +13,18 @@ public abstract class UserInterface implements UserInterfaceMethods {
     }
 
     public void addDevice(String childName, Device device){
+        if (guardian.getChildren().get(childName).geteTicket().getDevices().contains(device)){
+            System.out.println("ride already exists");
+            return;
+        }
         guardian.getChildren().get(childName).geteTicket().addDevice(device);
+        System.out.println("ride was added successfully");
     }
 
     public void removeDevice(String childName, Device device){
         guardian.getChildren().get(childName).geteTicket().removeDevice(device);
+        System.out.println("ride was removed successfully");
+
     }
 
     public void exitChildFromPark(Child child){
@@ -33,10 +40,18 @@ public abstract class UserInterface implements UserInterfaceMethods {
 
     public void getDevicesForChild(Child child) {
         ArrayList<String> devicesForChild = new ArrayList<>();
+        if (ePark.getDevices().isEmpty()){
+            System.out.println("There are no devices to show");
+            return;
+        }
         for (String deviceID: ePark.getDevices().keySet()){
             if (ePark.getDevices().get(deviceID).isValidForChild(child)){
                 devicesForChild.add(deviceID);
             }
+        }
+        if (devicesForChild.isEmpty()){
+            System.out.println("There are no devices to show");
+            return;
         }
         for (String deviceID: devicesForChild){
             System.out.println(deviceID);

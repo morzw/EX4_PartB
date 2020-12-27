@@ -42,8 +42,12 @@ public class eTicket {
     }
 
     public void printDevices() {
+        if (devices.isEmpty()) {
+            System.out.println("There are no devices to show");
+            return;
+        }
         for (Device device: devices) {
-            System.out.println(device);
+            System.out.println(device.getID());
         }
     }
 

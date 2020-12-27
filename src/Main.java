@@ -30,12 +30,18 @@ public class Main {
 
         // initial guardian
         Guardian guardian = new Guardian("1");
-        guardian.setSystem(new Application());
-        guardian.setWebsite(new Website());
+        Application app = new Application();
+        app.ePark = ePark;
+        app.guardian = guardian;
+        Website ws = new Website();
+        ws.ePark = ePark;
+        ws.guardian = guardian;
+        guardian.setSystem(app);
+        guardian.setWebsite(ws);
 
         systemObjects.add(guardian);
-        systemObjects.add(guardian.getWebsite());
-        systemObjects.add(guardian.getSystem());
+        systemObjects.add(app);
+        systemObjects.add(ws);
 
         // Main Menu
         System.out.println("Welcome to ePark Main Menu!\nPlease select one of the following options:");
@@ -146,8 +152,12 @@ public class Main {
                                 guardian.getSystem().addDevice(childName, rideToAdd);
                                 break;
                             case "no":
+                                System.out.println("ride was not added");
                                 break;
                         }
+                    }
+                    else {
+                        guardian.getSystem().addDevice(childName, rideToAdd);
                     }
 //                    Guardian guardian = signIn(e_park);
 //
