@@ -28,7 +28,7 @@ public class Guardian {
     }
 
     public void addChildren(Child child) {
-        this.children.put(child.getId(),child);
+        this.children.put(child.getID(),child);
     }
 
     public CreditCard getCreditCard() {
