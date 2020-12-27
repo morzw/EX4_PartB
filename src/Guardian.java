@@ -3,12 +3,11 @@ import java.util.List;
 
 public class Guardian {
 
-    private String ID; //??????????
+    private String ID;
     private List<Child> children;
-//    private UserInterface application;
-//    private WebSite webSite;
+    private UserInterface system;
     private CreditCard creditCard;
-//    Account account;
+    Account account;
 
     public Guardian(String ID) {
         this.ID = ID; //??????????
@@ -27,8 +26,8 @@ public class Guardian {
         return children;
     }
 
-    public void setChildren(List<Child> children) {
-        this.children = children;
+    public void addChildren(Child child) {
+        this.children.add(child);
     }
 
     public CreditCard getCreditCard() {
@@ -37,5 +36,21 @@ public class Guardian {
 
     public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
+    }
+
+    public UserInterface getSystem() {
+        return system;
+    }
+
+    public void setSystem(UserInterface system) {
+        this.system = system;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
