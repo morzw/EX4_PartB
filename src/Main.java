@@ -30,17 +30,18 @@ public class Main {
 
         // initial guardian
         Guardian guardian = new Guardian("1");
-        guardian.setSystem(new Application());
-        guardian.getSystem().setGuardian(guardian);
-        guardian.getSystem().setePark(ePark);
-        guardian.setWebsite(new Website());
-        guardian.getWebsite().setGuardian(guardian);
-        guardian.getWebsite().setePark(ePark);
-
+        Application app = new Application();
+        app.ePark = ePark;
+        app.guardian = guardian;
+        Website ws = new Website();
+        ws.ePark = ePark;
+        ws.guardian = guardian;
+        guardian.setSystem(app);
+        guardian.setWebsite(ws);
 
         systemObjects.add(guardian);
-        systemObjects.add(guardian.getWebsite());
-        systemObjects.add(guardian.getSystem());
+        systemObjects.add(app);
+        systemObjects.add(ws);
 
         // Main Menu
         System.out.println("Welcome to ePark Main Menu!\nPlease select one of the following options:");
@@ -64,7 +65,7 @@ public class Main {
                     String input = "y";
                     while (input.equals("y")) {
                         System.out.println("enter child name:");
-                        String name = in.nextLine();
+                        String name = in.next();
                         System.out.println("enter child weight:");
                         double weight = in.nextDouble();
                         System.out.println("enter child height:");
@@ -116,8 +117,8 @@ public class Main {
 //        System.out.println("Welcome to Manage ticket!\nPlease enter the child name from the list for whom you would like to manage the e-Ticket");
         System.out.println("Welcome to Manage e-Ticket for: " + childName);
         String manageTicketAction = "";
-        String rideToAdd = "";
-        String rideToRemove = "";
+        //String rideToAdd = "";
+        //String rideToRemove = "";
         while (manageTicketAction != "exitmenu") {
             System.out.println("Please select one of the following options:");
             System.out.println("For adding a ride enter Add");
@@ -139,13 +140,25 @@ public class Main {
                 case "add":
                     System.out.println("Please choose a ride to add:");
                     guardian.getSystem().getDevicesForChild(guardian.getChildren().get(childName));
-                    Scanner name = new Scanner(System.in);
-                    String rideName = name.nextLine();
-                    if (guardian.getSystem().ePark.getDevices().get(rideName).isExtreme()){
-                        System.out.println("Do you allow extreme ride? Y/N");
+                    Scanner nameRideToAdd = new Scanner(System.in);
+                    String rideToAddString = nameRideToAdd.nextLine();
+                    Device rideToAdd = guardian.getSystem().ePark.getDevices().get(rideToAddString);
+                    if (rideToAdd.isExtreme()){
+                        System.out.println("Do you allow extreme ride? Yes/No");
+                        Scanner ans = new Scanner(System.in);
+                        String answer = ans.nextLine().toLowerCase();
+                        switch (answer) {
+                            case "yes":
+                                guardian.getSystem().addDevice(childName, rideToAdd);
+                                break;
+                            case "no":
+                                System.out.println("ride was not added");
+                                break;
+                        }
                     }
-                    //TODO: show the list of possible rides
-                    //TODO: add ride
+                    else {
+                        guardian.getSystem().addDevice(childName, rideToAdd);
+                    }
 //                    Guardian guardian = signIn(e_park);
 //
 //                    if(guardian!=null) {
@@ -154,8 +167,12 @@ public class Main {
 //                    }
                     break;
                 case "remove":
-                    //TODO: show the child list of rides
-                    //TODO: remove ride
+                    System.out.println("Please choose a ride to remove:");
+                    guardian.getChildren().get(childName).geteTicket().printDevices();
+                    Scanner nameRideToRemove = new Scanner(System.in);
+                    String rideToRemoveString = nameRideToRemove.nextLine();
+                    Device rideToRemove = guardian.getSystem().ePark.getDevices().get(rideToRemoveString);
+                    guardian.getSystem().removeDevice(childName, rideToRemove);
 //                    Guardian guardian2 = logIn(e_park);
 //                    if(guardian2!=null) {
 //                        mainMenu(e_park, guardian2);
