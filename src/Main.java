@@ -28,6 +28,10 @@ public class Main {
 
         systemObjects.add(ePark);
 
+        // initial guardian
+        Guardian guardian = new Guardian("1");
+        systemObjects.add(guardian);
+
         // Main Menu
         System.out.println("Welcome to ePark Main Menu!\nPlease select one of the following options:");
         String action = "";
@@ -47,23 +51,11 @@ public class Main {
             }
             switch (action) {
                 case "register":
-//                    Guardian guardian = signIn(e_park);
-//
-//                    if(guardian!=null) {
-//                        allObjects.add(guardian);
-//                        mainMenu(e_park, guardian);
-//                    }
                     break;
                 case "manageticket":
                     manageTicketMenu(childName);
-//                    Guardian guardian2 = logIn(e_park);
-//                    if(guardian2!=null) {
-//                        mainMenu(e_park, guardian2);
-//                    }
                     break;
                 case "exitpark":
-//                    allObjects.clear();
-//                    System.out.println("GoodBye");
                     break;
                 case "exit":
                     systemObjects.clear();
