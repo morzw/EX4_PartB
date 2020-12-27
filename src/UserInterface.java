@@ -12,7 +12,13 @@ public abstract class UserInterface implements UserInterfaceMethods {
         return child.geteTicket();
     }
 
-//    public void addDevices(Child child, String deviceID, Device device){}
+    public void addDevice(String childName, Device device){
+        guardian.getChildren().get(childName).geteTicket().addDevice(device);
+    }
+
+    public void removeDevice(String childName, Device device){
+        guardian.getChildren().get(childName).geteTicket().removeDevice(device);
+    }
 
     public void exitChildFromPark(Child child){
         double amount = child.getAmount();

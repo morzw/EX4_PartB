@@ -41,8 +41,22 @@ public class eTicket {
         return devices;
     }
 
+    public void printDevices() {
+        for (Device device: devices) {
+            System.out.println(device);
+        }
+    }
+
     public void setDevices(List<Device> devices) {
         this.devices = devices;
+    }
+
+    public void addDevice(Device device) {
+        this.devices.add(device);
+    }
+
+    public void removeDevice(Device device) {
+        this.devices.remove(device);
     }
 
     public eBracelet geteBracelet() {
