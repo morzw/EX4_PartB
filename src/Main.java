@@ -72,7 +72,7 @@ public class Main {
                         systemObjects.add(child.geteTicket());
                         systemObjects.add(child.geteTicket().geteBracelet());
                         System.out.println("to register another child press y");
-                        input = in.nextLine();
+                        input = in.next();
                     }
                     System.out.println("enter credit card number:");
                     int creditCardNumber = in.nextInt();
@@ -86,12 +86,12 @@ public class Main {
                     systemObjects.add(guardian.getAccount());
                     break;
                 case "manageticket":
-                    manageTicketMenu(childName);
+                    manageTicketMenu(guardian ,childName);
                     break;
                 case "exitpark":
-                    System.out.println("enter child ID to remove");
-                    int id = in.nextInt();
-                    Child child = guardian.exitPark(id);
+                    System.out.println("enter child name to remove");
+                    String name = in.next();
+                    Child child = guardian.exitPark(name);
                     systemObjects.remove(child);
                     systemObjects.remove(child.geteTicket().geteBracelet());
                     systemObjects.remove(child.geteTicket());
@@ -107,7 +107,7 @@ public class Main {
     }
 
     // manage ticket menu
-    private static void manageTicketMenu(String childName) {
+    private static void manageTicketMenu(Guardian guardian, String childName) {
 //        System.out.println("Welcome to Manage ticket!\nPlease enter the child name from the list for whom you would like to manage the e-Ticket");
         System.out.println("Welcome to Manage e-Ticket for: " + childName);
         String manageTicketAction = "";
@@ -132,6 +132,13 @@ public class Main {
 //            }
             switch (manageTicketAction) {
                 case "add":
+                    System.out.println("Please choose a ride to add:");
+                    guardian.getSystem().getDevicesForChild(guardian.getChildren().get(childName));
+                    Scanner name = new Scanner(System.in);
+                    String rideName = name.nextLine();
+                    if (guardian.getSystem().ePark.getDevices().get(rideName).isExtreme()){
+                        System.out.println("Do you allow extreme ride? Y/N");
+                    }
                     //TODO: show the list of possible rides
                     //TODO: add ride
 //                    Guardian guardian = signIn(e_park);

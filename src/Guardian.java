@@ -5,7 +5,7 @@ import java.util.List;
 public class Guardian {
 
     private String ID;
-    private HashMap<Integer,Child> children;
+    private HashMap<String,Child> children;
     private UserInterface system;
     private UserInterface website;
     private CreditCard creditCard;
@@ -13,7 +13,7 @@ public class Guardian {
 
     public Guardian(String ID) {
         this.ID = ID;
-        this.children = new HashMap<Integer, Child>();
+        this.children = new HashMap<String, Child>();
     }
 
     public UserInterface getWebsite() {
@@ -32,12 +32,12 @@ public class Guardian {
         this.ID = ID;
     }
 
-    public HashMap<Integer, Child> getChildren() {
+    public HashMap<String, Child> getChildren() {
         return children;
     }
 
     public void addChildren(Child child) {
-        this.children.put(child.getID(),child);
+        this.children.put(child.getName(),child);
     }
 
     public CreditCard getCreditCard() {
@@ -64,9 +64,9 @@ public class Guardian {
         this.account = account;
     }
 
-    public Child exitPark(int childId){
-        Child child =children.get(childId);
-        children.remove(childId);
+    public Child exitPark(String childName){
+        Child child =children.get(childName);
+        children.remove(childName);
         system.exitChildFromPark(child);
         return child;
 //        TODO: tell mor the function is returning child
