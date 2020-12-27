@@ -55,8 +55,10 @@ public class Guardian {
         this.account = account;
     }
 
-    public void exitPark(int childId){
+    public Child exitPark(int childId){
         Child child =children.get(childId);
-//        TODO: check where the price from
+        system.exitChildFromPark(child);
+        return child;
+//        TODO: tell mor the function is returning child
     }
 }

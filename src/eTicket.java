@@ -6,6 +6,7 @@ public class eTicket {
     private int age;
     private double timeLimit;
     private List<Device> devices;
+
     private eBracelet eBracelet;
 
     public eTicket(String childName, int age, double timeLimit) {
@@ -19,9 +20,14 @@ public class eTicket {
         return age;
     }
 
+    public double getAmount() {
+        return devices.size();
+    }
+
     public void setAge(int age) {
         this.age = age;
     }
+
 
     public double getTimeLimit() {
         return timeLimit;

@@ -3,5 +3,5 @@ public interface UserInterfaceMethods {
     void showChildrenLocationOnMap();
     eTicket getETicket(Child child);
     void addNewEntry(Child child);
-    void charge();
+    boolean charge(double amount , CreditCard creditCard);
 }
