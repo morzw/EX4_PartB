@@ -57,6 +57,7 @@ public class Guardian {
 
     public Child exitPark(int childId){
         Child child =children.get(childId);
+        children.remove(childId);
         system.exitChildFromPark(child);
         return child;
 //        TODO: tell mor the function is returning child

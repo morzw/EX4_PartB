@@ -56,6 +56,13 @@ public class Main {
                     manageTicketMenu(childName);
                     break;
                 case "exitpark":
+                    System.out.println("enter child ID to remove");
+                    int id = in.nextInt();
+                    Child child = guardian.exitPark(id);
+                    systemObjects.remove(child);
+                    systemObjects.remove(child.geteTicket().geteBracelet());
+                    systemObjects.remove(child.geteTicket());
+
                     break;
                 case "exit":
                     systemObjects.clear();
