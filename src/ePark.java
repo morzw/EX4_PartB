@@ -9,8 +9,8 @@ public class ePark {
     private HashMap<String, Guardian> guardians;
 
     public ePark() {
-        this.devices = new HashMap<String, Device>();
-        this.guardians= new HashMap<String, Guardian>();
+        this.devices = new HashMap<>();
+        this.guardians= new HashMap<>();
     }
 
     public void addDevice(String ID,Device device){
@@ -45,18 +45,18 @@ public class ePark {
         this.devices.get(ID).setProper(status);
     }
 
-    public ArrayList<Device> checkDevices(Child child){
-        Iterator it = devices.entrySet().iterator();
-        ArrayList<Device> result = new ArrayList<>();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            Device device = (Device) pair.getValue();
-            if(device.isValidForChild(child)){
-                result.add(device);
-            }
-        }
-        return result;
-    }
+//    public ArrayList<Device> checkDevices(Child child){
+//        Iterator it = devices.entrySet().iterator();
+//        ArrayList<Device> result = new ArrayList<>();
+//        while (it.hasNext()) {
+//            Map.Entry pair = (Map.Entry)it.next();
+//            Device device = (Device) pair.getValue();
+//            if(device.isValidForChild(child)){
+//                result.add(device);
+//            }
+//        }
+//        return result;
+//    }
 
     public HashMap<String, Device> getDevices() {
         return devices;
