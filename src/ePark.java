@@ -51,11 +51,14 @@ public class ePark {
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
             Device device = (Device) pair.getValue();
-            if(device.checkChild(child)){
+            if(device.isValidForChild(child)){
                 result.add(device);
             }
         }
         return result;
     }
 
+    public HashMap<String, Device> getDevices() {
+        return devices;
+    }
 }

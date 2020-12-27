@@ -78,7 +78,7 @@ public class Device {
         return false;
     }
 
-    public boolean checkChild(Child child){
+    public boolean isValidForChild(Child child){
         if(!isOpen){
             System.out.println("The device isn't open.");
             return false;
