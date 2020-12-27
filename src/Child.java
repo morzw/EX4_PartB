@@ -1,15 +1,18 @@
+import java.util.Random;
+
 public class Child {
 
     private String name;
-    private String ID;
+    private int ID;
     private String password;
     private eTicket eTicket;
 
-    public Child(String name, String ID, String password, int age, double timeLimit) {
+    public Child(String name, String password, int age, double timeLimit,double height,double weight) {
+        Random rand = new Random();
         this.name = name;
-        this.ID = ID;
+        this.ID = rand.nextInt();
         this.password = password;
-        this.eTicket = new eTicket(ID, age, timeLimit);
+        this.eTicket = new eTicket(name, age, timeLimit,height,weight);
     }
 
     public String getName() {
@@ -24,11 +27,11 @@ public class Child {
         this.name = name;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 

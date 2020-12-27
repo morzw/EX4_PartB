@@ -1,2 +1,2 @@
-public class Application {
+public class Application extends UserInterface {
 }

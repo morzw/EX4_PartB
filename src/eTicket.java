@@ -9,11 +9,11 @@ public class eTicket {
 
     private eBracelet eBracelet;
 
-    public eTicket(String childName, int age, double timeLimit) {
+    public eTicket(String childName, int age, double timeLimit, double height , double weight) {
         this.age = age;
         this.timeLimit = timeLimit;
         this.devices = new ArrayList<>();
-        this.eBracelet = new eBracelet(childName);
+        this.eBracelet = new eBracelet(childName,height,weight);
     }
 
     public int getAge() {

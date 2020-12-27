@@ -1,2 +1,2 @@
-public class Website {
+public class Website extends UserInterface{
 }

@@ -12,16 +12,6 @@ public abstract class UserInterface implements UserInterfaceMethods {
         return child.geteTicket();
     }
 
-    public HashMap<String, Device> getDevicesForChild(Child child) {
-        HashMap<String, Device> devicesForChild = new HashMap<>();
-        for (String deviceID: ePark.getDevices().keySet()){
-            if (ePark.getDevices().get(deviceID).isValidForChild(child)){
-                devicesForChild.put(deviceID, ePark.getDevices().get(deviceID)) ;
-            }
-        }
-        return devicesForChild;
-    }
-
 //    public void addDevices(Child child, String deviceID, Device device){}
 
     public void exitChildFromPark(Child child){
@@ -33,6 +23,33 @@ public abstract class UserInterface implements UserInterfaceMethods {
     public boolean charge(double amount, CreditCard creditCard){
         guardian.account.setTotalPrice(guardian.account.getTotalPrice() - amount);
         return true;
+    }
+
+    public void getDevicesForChild(Child child) {
+        ArrayList<String> devicesForChild = new ArrayList<>();
+        for (String deviceID: ePark.getDevices().keySet()){
+            if (ePark.getDevices().get(deviceID).isValidForChild(child)){
+                devicesForChild.add(deviceID);
+            }
+        }
+        for (String deviceID: devicesForChild){
+            System.out.println(deviceID);
+        }
+    }
+
+    @Override
+    public void control() {
+
+    }
+
+    @Override
+    public void showChildrenLocationOnMap() {
+
+    }
+
+    @Override
+    public void addNewEntry(Child child) {
+
     }
 }
 

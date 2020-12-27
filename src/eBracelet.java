@@ -4,9 +4,13 @@ public class eBracelet {
     private double height;
     private double weight;
 
-    public eBracelet(String nameOfChild) {
+    public eBracelet(String nameOfChild,double height, double weight) {
+        this.height = height;
+        this.weight = weight;
         this.nameOfChild = nameOfChild;
     }
+
+
 
     public String getNameOfChild() {
         return nameOfChild;

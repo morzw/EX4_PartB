@@ -30,7 +30,12 @@ public class Main {
 
         // initial guardian
         Guardian guardian = new Guardian("1");
+        guardian.setSystem(new Application());
+        guardian.setWebsite(new Website());
+
         systemObjects.add(guardian);
+        systemObjects.add(guardian.getWebsite());
+        systemObjects.add(guardian.getSystem());
 
         // Main Menu
         System.out.println("Welcome to ePark Main Menu!\nPlease select one of the following options:");
@@ -51,6 +56,34 @@ public class Main {
             }
             switch (action) {
                 case "register":
+                    String input = "y";
+                    while (input.equals("y")) {
+                        System.out.println("enter child name:");
+                        String name = in.nextLine();
+                        System.out.println("enter child weight:");
+                        double weight = in.nextDouble();
+                        System.out.println("enter child height:");
+                        double height = in.nextDouble();
+                        System.out.println("enter child age:");
+                        int age = in.nextInt();
+                        Child child = new Child(name, "1234", age, 5, height, weight);
+                        guardian.addChildren(child);
+                        systemObjects.add(child);
+                        systemObjects.add(child.geteTicket());
+                        systemObjects.add(child.geteTicket().geteBracelet());
+                        System.out.println("to register another child press y");
+                        input = in.nextLine();
+                    }
+                    System.out.println("enter credit card number:");
+                    int creditCardNumber = in.nextInt();
+                    System.out.println("enter credit card password(int):");
+                    int creditCardPassword = in.nextInt();
+                    CreditCard creditCard = new CreditCard(creditCardNumber, creditCardPassword);
+                    systemObjects.add(creditCard);
+                    System.out.println("enter account limit:");
+                    double limit = in.nextDouble();
+                    guardian.setAccount(new Account(limit, 0));
+                    systemObjects.add(guardian.getAccount());
                     break;
                 case "manageticket":
                     manageTicketMenu(childName);
@@ -62,7 +95,6 @@ public class Main {
                     systemObjects.remove(child);
                     systemObjects.remove(child.geteTicket().geteBracelet());
                     systemObjects.remove(child.geteTicket());
-
                     break;
                 case "exit":
                     systemObjects.clear();
@@ -76,27 +108,28 @@ public class Main {
 
     // manage ticket menu
     private static void manageTicketMenu(String childName) {
-        System.out.println("Welcome to Manage ticket!\nPlease enter the child name from the list for whom you would like to manage the e-Ticket");
-        //TODO: show the children list of the guardian
+//        System.out.println("Welcome to Manage ticket!\nPlease enter the child name from the list for whom you would like to manage the e-Ticket");
+        System.out.println("Welcome to Manage e-Ticket for: " + childName);
         String manageTicketAction = "";
         String rideToAdd = "";
         String rideToRemove = "";
-        while (manageTicketAction != "exitMenu") {
-            System.out.println("For Add ride enter add <rideName>,  e.g., add MambaRide");
-            System.out.println("For Remove ride enter remove <rideName>,  e.g., remove Carrousel");
-            System.out.println("For resuming to the Main Menu enter exitMenu");
+        while (manageTicketAction != "exitmenu") {
+            System.out.println("Please select one of the following options:");
+            System.out.println("For adding a ride enter Add");
+            System.out.println("For removing a ride enter Remove");
+            System.out.println("For resuming enter exitMenu");
             Scanner in = new Scanner(System.in);
             manageTicketAction = in.nextLine();
-            String originManageTicketAction = manageTicketAction;
+//            String originManageTicketAction = manageTicketAction;
             manageTicketAction = manageTicketAction.toLowerCase();
-            if (manageTicketAction.contains("add")) {
-                rideToAdd = originManageTicketAction.substring(4);
-                manageTicketAction = "add";
-            }
-            if (manageTicketAction.contains("remove")) {
-                rideToRemove = originManageTicketAction.substring(7);
-                manageTicketAction = "remove";
-            }
+//            if (manageTicketAction.contains("add")) {
+//                rideToAdd = originManageTicketAction.substring(4);
+//                manageTicketAction = "add";
+//            }
+//            if (manageTicketAction.contains("remove")) {
+//                rideToRemove = originManageTicketAction.substring(7);
+//                manageTicketAction = "remove";
+//            }
             switch (manageTicketAction) {
                 case "add":
                     //TODO: show the list of possible rides
