@@ -16,6 +16,10 @@ public class Child {
         return name;
     }
 
+    public double getAmount(){
+        return eTicket.getAmount();
+    }
+
     public void setName(String name) {
         this.name = name;
     }
