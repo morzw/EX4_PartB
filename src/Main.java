@@ -98,11 +98,19 @@ public class Main {
                     System.out.println("enter child name to remove");
                     String name = in.next();
                     Child child = guardian.exitPark(name);
+                    if (child == null){
+                        System.out.println("child not found");
+                        break;
+                    }
                     systemObjects.remove(child);
                     systemObjects.remove(child.geteTicket().geteBracelet());
                     systemObjects.remove(child.geteTicket());
                     break;
                 case "exit":
+                    if (!guardian.getChildren().isEmpty()) {
+                        System.out.println("you forgot child !");
+                        break;
+                    }
                     systemObjects.clear();
                     System.out.println("GoodBye! Hope to see you soon :)");
                     return;
