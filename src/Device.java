@@ -88,15 +88,15 @@ public class Device {
             return false;
         }
         if(child.geteTicket().getAge() < ageLimit){
-            System.out.println(child.getID() + " doesn't exceed the age limit.");
+            System.out.println(child.getName() + " doesn't exceed the age limit of " + this.ID +".");
             return false;
         }
         if(child.geteTicket().geteBracelet().getHeight() < heightLimit){
-            System.out.println(child.getID() + " doesn't exceed the height limit.");
+            System.out.println(child.getName() + " doesn't exceed the height limit of " + this.ID +".");
             return false;
         }
         if(child.geteTicket().geteBracelet().getWeight() < weightLimit){
-            System.out.println(child.getID() + " doesn't exceed the weight limit.");
+            System.out.println(child.getName() + " doesn't exceed the weight limit of " + this.ID +".");
             return false;
         }
         return true;
