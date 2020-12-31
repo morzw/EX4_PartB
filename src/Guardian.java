@@ -70,6 +70,5 @@ public class Guardian {
         children.remove(childName);
         system.exitChildFromPark(child);
         return child;
-//        TODO: tell mor the function is returning child
     }
 }

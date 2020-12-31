@@ -99,6 +99,7 @@ public class Main {
                     System.out.println("enter child name to remove");
                     String name = scanner.next();
                     Child child = guardian.exitPark(name);
+
                     if (child == null){
                         System.out.println("child not found");
                         break;
